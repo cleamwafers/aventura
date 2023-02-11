@@ -1,24 +1,34 @@
-# README
+# <aventura>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+<情熱のシーラ（原題：El tiempo entre costuras）のドラマ『全１７話（日本版編集）』を、
+判明しているロケ地や特定されていないロケ地についてユーザーが投稿できる。>
 
-Things you may want to cover:
+### テーマを選んだ理由
+<2019年から現在に至るまで世間を巻き込んだ新型コロナウイルス（COVID-19）により陰性証明や渡航制限によって海外旅行がより遠い存在となっていましたが、
+２０２３年の大型連休明けの５月８日に５類に引き下げることになり、今までおうち時間が長くなり海外旅行へ行けなかった方々が旅行する機会が増えることが予想されます。
+日本はアニメ文化による国内の聖地巡りが地域活性化へと繋がっていますが、海外となるとドラマが放送されてもメディアで取り上げられることは少なく、
+一時韓流ドラマのみ聖地巡りが取り上げられまだまだ発展途上だと思ったので、スペイン語検定６級を所持している私がスペインの大ヒットドラマを軸に魅力を伝えたいと思ったことや、
+２０２０年末から占星術の”風の時代”が始まったと言われ始め”モノ”ではなく”体験”に価値が見出される今の時代、旅行という体験はまさに活発化すると思いテーマにしました。
 
-* Ruby version
+### ターゲットユーザ
+<海外旅行が好きな人、スペインが好きな人、海外ドラマが好きな人。スペイン、ポルトガル、モロッコの3カ国に興味がある方。>
 
-* System dependencies
+### 主な利用シーン
+<スペイン、ポルトガル、モロッコが好きな方、また、3カ国に興味はあるが旅行経験が無い方。
+情熱のシーラのドラマを知っていたり、実際にこれら３カ国へ旅行の経験がある方が情報を寄せ合う>
 
-* Configuration
+## 設計書
+<...>
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+<!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
+<!--- 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
