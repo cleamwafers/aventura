@@ -33,7 +33,16 @@
 - ドラマに出てくる場所やものがどこか知りたい時
 
 ## 設計書
-
+- 実装機能リスト( https://docs.google.com/spreadsheets/d/1pjnGg3TeiQohSbuFu_8qukIymMTsMZLJr72tzktyMsI/edit?usp=sharing )
+- ER図(管理者: )
+-     (ユーザー: )
+- アプリケーション詳細設計(https://docs.google.com/spreadsheets/d/1a-Qu6X5zrTCk75upwEW_vD-zm7ZgUJSMLWKPGj7gUS4/edit#gid=549108681)
+- 画面遷移図(管理者: )
+-           (ユーザー: )
+- 画面設計(管理者: https://app.diagrams.net/#G1xGD-mSXKRgz7cjXVeAcPtYFMu1rGEYsO)
+-         (ユーザー:https://app.diagrams.net/#G13Tz09put2HsNqu-JzLziAmi1DfYjYjOg)
+- テーブル定義書
+- テスト仕様書
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
