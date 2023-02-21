@@ -37,7 +37,7 @@
 - ER図(https://app.diagrams.net/#G1s0O3xKC3SG91I3eSY8PQ2SEbd1AJolVL)
 - アプリケーション詳細設計(https://docs.google.com/spreadsheets/d/1a-Qu6X5zrTCk75upwEW_vD-zm7ZgUJSMLWKPGj7gUS4/edit#gid=549108681)
 - 画面遷移図(管理者:https://app.diagrams.net/#G1bRBtMQaN54u75_7nKEwKrn2WckQ1YcR8 )
--           (ユーザー:https://app.diagrams.net/#G1DhuDC2HGe5XLQHiVyfdGwrW3s0Qhjoc6 )
+-           (ユーザー:https://app.diagrams.net/#G1DhuDC2HGe5XLQHiVyfdGwrW3s0Qhjoc6)
 - 画面設計(管理者: https://app.diagrams.net/#G1xGD-mSXKRgz7cjXVeAcPtYFMu1rGEYsO)
 -         (ユーザー:https://app.diagrams.net/#G13Tz09put2HsNqu-JzLziAmi1DfYjYjOg)
 - テーブル定義書
