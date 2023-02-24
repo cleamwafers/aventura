@@ -1,0 +1,2 @@
+class Sanctuary < ApplicationRecord
+end

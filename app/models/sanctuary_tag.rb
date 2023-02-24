@@ -1,0 +1,2 @@
+class SanctuaryTag < ApplicationRecord
+end
