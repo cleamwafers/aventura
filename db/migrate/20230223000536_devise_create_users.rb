@@ -4,7 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.string :email,              null: false, default: "",unique: true
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -32,13 +32,19 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+       ## お気に入りを保存するカラム
+      t.integer :favorite_id, null: false
+      ## 聖地を保存するカラム
+      t.integer :sanctuary_id, null: false
       ## 名前を保存するカラム
-      t.string :name
+      t.string :name, null: false,unique: true
       ## 自己紹介を保存するカラム
-      t.string :introduction
-
-      t.string :sns
+      t.string :introduction, null: false
+      ## SNSを保存するカラム
+      t.string :sns, null: false, unique: true
+      ## 退会処理を保存するカラム
       t.boolean :is_deleted
+
 
       t.timestamps null: false
     end
