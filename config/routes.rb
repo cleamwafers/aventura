@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  namespace :user do
+    get 'users/show'
+    get 'users/edit'
+    get 'users/quit'
+  end
+  namespace :user do
+    get 'sanctuarys/index'
+    get 'sanctuarys/show'
+    get 'sanctuarys/edit'
+  end
+  namespace :user do
+    get 'homes/top'
+    get 'homes/abput'
+  end
   namespace :admin do
     get 'users/index'
     get 'users/show'
