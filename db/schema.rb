@@ -53,11 +53,15 @@ ActiveRecord::Schema.define(version: 2023_02_25_210643) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "sanctuary_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "genres", force: :cascade do |t|
+    t.integer "sanctuarys_id", null: false
+    t.string "genre_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -77,11 +81,15 @@ ActiveRecord::Schema.define(version: 2023_02_25_210643) do
   end
 
   create_table "sanctuary_tags", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "sanctuary_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|
+    t.integer "sanctuarys_id", null: false
+    t.string "tags_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
