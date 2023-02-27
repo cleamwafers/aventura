@@ -37,7 +37,13 @@ Rails.application.routes.draw do
 # URL /customers/sign_in ...
 devise_for :user,skip: [:passwords], controllers: {
   registrations: "user/registrations",
-  sessions: 'user/sessions'
+  sessions: 'user/sessions',
+  root to: 'homes#top',
+  resources :sanctuarys, only: [:new, :create, :index, :show, :destroy] do
+  resource :favorites, only: [:create, :destroy]
+  resources :impression, only: [:create, :destroy]
+end
+ resources :users, only: [:show, :edit, :update]
 }
 
 # 管理者用
