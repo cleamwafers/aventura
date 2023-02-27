@@ -30,4 +30,8 @@ class User::UsersController < ApplicationController
     flash[:notice] = "ありがとうございました。またのご利用ください。"
     redirect_to root_path
   end
+
+  def user_params
+  	params.require(:user).permit(:name, :email, :favorite_id,:sanctuary_id,:sns,:introduction,:is_deleted)
+  end
 end
