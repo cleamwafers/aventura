@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   namespace :user do
     get 'homes/top'
-    get 'homes/abput'
+    get 'homes/about'
   end
   namespace :admin do
     get 'users/index'
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get 'sanctuarys/show'
   end
   namespace :admin do
-    get 'homes/top'
+    get '/root' =>'homes#top'
   end
 # ユーザー用
 # URL /customers/sign_in ...

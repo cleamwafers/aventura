@@ -28,7 +28,7 @@ class Admin::GenresController < ApplicationController
 
   def destroy
   end
-  
+
   private
 
   def genre_params
