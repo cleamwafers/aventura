@@ -13,9 +13,9 @@ class Admin::UsersController < ApplicationController
 
   def update
     @users = User.page(params[:page])
-    if @customer.update(customer_params)
-			   flash[:success] = "Customer was successfully updated"
-			   redirect_to admin_customer_path
+    if @user.update(user_params)
+			   flash[:success] = "ユーザー情報を更新しました"
+			   redirect_to admin_user_path
 		else
 				render "edit"
 		end
@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  def customer_params
+  def user_params
 	  params.require(:user).permit(:name,:introduction,:sns,:email,:is_deleted)
   end
 end

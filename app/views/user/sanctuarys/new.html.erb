@@ -1,0 +1,16 @@
+<h1>聖地登録</h1>
+  <%= form_with model: @sanctuary do |f| %>
+
+    <h4>聖地名</h4>
+      <%= f.text_field :name %>
+    <h4>場所</h4>
+    <!--緯度と経度をどうするか-->
+    <h4>ジャンル</h4>
+      <%= f.text_area :genre %>
+
+    <h4>感想</h4>
+      <%= f.text_area :impression %>
+    <h4>画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+    <%= f.submit '投稿' %>
+  <% end %>

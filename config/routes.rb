@@ -37,14 +37,13 @@ Rails.application.routes.draw do
 # URL /customers/sign_in ...
 devise_for :user,skip: [:passwords], controllers: {
   registrations: "user/registrations",
-  sessions: 'user/sessions',
-  root to: 'homes#top',
+  sessions: 'user/sessions'
+}
+  root to: 'homes#top'
   resources :sanctuarys, only: [:new, :create, :index, :show, :destroy] do
   resource :favorites, only: [:create, :destroy]
   resources :impression, only: [:create, :destroy]
-end
- resources :users, only: [:show, :edit, :update]
-}
+  resources :users, only: [:show, :edit, :update]
 
 # 管理者用
 # URL /admin/sign_in ...
@@ -53,4 +52,5 @@ devise_for :admin,skip: [:registrations, :passwords] , controllers: {
 }
   root to: 'homes#top'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ end
 end

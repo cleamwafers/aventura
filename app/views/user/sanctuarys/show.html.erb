@@ -1,2 +1,27 @@
 <h1>User::Sanctuarys#show</h1>
-<p>Find me in app/views/user/sanctuarys/show.html.erb</p>
+<div>
+  <%= image_tag @sanctuary.get_image %>
+  <p>聖地名：<%= @sanctuary.name %></p>
+  <p>感想：<%= @sanctuary.impression %></p>
+  <p>投稿ユーザー画像：<%= image_tag @sanctuary.user.get_profile_image(100,100) %></p>
+  <p>ユーザーネーム：<%= @sanctuary.user.name %></p>
+  <p>投稿日時：<%= @sanctuary.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @sanctuary.user == current_user %>
+    <%= link_to "削除",sanctuary_path(@sanctuary), method: :delete %>
+  <% end %>
+  <% if @sanctuary.favorited_by?(current_user) %>
+    <p>
+      <%= link_to sanctuary_favorites_path(@sanctuary), method: :delete do %>
+        ♥<%= @sanctuary.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to sanctuary_favorites_path(@sanctuary), method: :post do %>
+        ♡<%= @sanctuary.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %></div>
+
+:
+:
