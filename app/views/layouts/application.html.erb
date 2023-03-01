@@ -36,6 +36,7 @@
    <ul class="logo">
     <%=link_to "LOGO", root_path, class: "btn btn-light" %>
      <nav class="navbar navbar-light bg-light">
+     ようこそ!
       <div class="button2">
        <%= link_to "聖地一覧",admin_sanctuarys_path,class: "btn btn-light"  %>
        <%= link_to "ユーザー一覧",admin_users_path,class: "btn btn-light" %>
@@ -51,7 +52,7 @@
     <ul class="logo">
      <%=link_to "LOGO", root_path, class: "btn btn-light" %>
      <%= link_to  "About",user_homes_about_path,class: "btn btn-light" %>
-     <%= link_to "聖地一覧",admin_sanctuarys_index_path,class: "btn btn-light"  %>
+     <%= link_to "聖地一覧",admin_sanctuarys_path,class: "btn btn-light"  %>
      <%= link_to  "新規登録",new_user_registration_path,class: "btn btn-light" %>
      <%= link_to "ログイン", new_user_session_path,class: "btn btn-light" %>
 
