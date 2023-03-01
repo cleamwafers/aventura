@@ -6,4 +6,40 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
        </form>
       </div>
-<p>Find me in app/views/admin/sanctuarys/index.html.erb</p>
+<h3 class="head-line title_h2 text-center admin_item_index">聖地一覧</h3>
+<div class="row">
+    <table class="table table-hover table-bordered table-condensed">
+    <%= link_to new_user_sanctuary_path do %>
+    <i class="fa-solid fa-plus"></i>
+  <% end %>
+      <thead>
+        <tr class="info">
+          <th>聖地ID</th>
+          <th>聖地名</th>
+          <th>ジャンル</th>
+          <th>タグ<th>
+        </tr>
+      </thead>
+      <tbody>
+				<% @sanctuarys.each do |sanctuary| %>
+  				<tr>
+            <td>
+              <%= sanctuary.id %>
+            </td>
+            <td>
+              <%= link_to sanctuary.name, user_sanctuarys_path(sanctuary.id) %>
+            </td>
+            <td>
+              <%= sanctuary.genres_name %>
+            </td>
+            <td>
+              <%= sanctuary.tags_name %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= paginate @sanctuarys %>
+</div>
+

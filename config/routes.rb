@@ -1,37 +1,20 @@
 Rails.application.routes.draw do
-  namespace :user do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/quit'
-  end
-  namespace :user do
-    get 'sanctuarys/index'
-    get 'sanctuarys/show'
-    get 'sanctuarys/edit'
-  end
-  namespace :user do
-    get 'homes/top'
-    get 'homes/about'
+  # 管理者用
+  # URL /admin/sign_in ...
+  devise_for :admin,skip: [:registrations, :passwords] , controllers: {
+  sessions: "admin/sessions"
+  }
+  scope module: :user do
+    root 'homes#top'
   end
   namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :admin do
-    get 'tags/index'
-    get 'tags/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'sanctuarys/index'
-    get 'sanctuarys/show'
-  end
-  namespace :admin do
-    get '/root' =>'homes#top'
+    # get '/' => '/'
+    resources :users,only: [:index,:show,:edit,:update]
+    resources :genres,only: [:index,:create,:edit,:update]
+    resources :tags,only: [:index,:show,:edit,:update]
+    resources :sanctuarys, only: [:index,:show,:edit,:update]
+    resources :orders,only: [:show,:update] do
+    end
   end
 # ユーザー用
 # URL /customers/sign_in ...
@@ -39,18 +22,16 @@ devise_for :user,skip: [:passwords], controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'
 }
-  root to: 'homes#top'
-  resources :sanctuarys, only: [:new, :create, :index, :show, :destroy] do
+
+ namespace :user do
+  #root to: 'homes#top'
+  get 'homes/about'
+  resources :sanctuarys, only: [:new, :create, :index, :show,:edit, :destroy] do
   resource :favorites, only: [:create, :destroy]
   resources :impression, only: [:create, :destroy]
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update,:quit]
 
-# 管理者用
-# URL /admin/sign_in ...
-devise_for :admin,skip: [:registrations, :passwords] , controllers: {
-  sessions: "admin/sessions"
-}
-  root to: 'homes#top'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  end
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+end
 end
