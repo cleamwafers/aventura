@@ -9,8 +9,23 @@
   <% if @sanctuary.user == current_user %>
     <%= link_to "削除",sanctuary_path(@sanctuary), method: :delete %>
   <% end %>
+  
+  <div>
+  <p>コメント件数：<%= @sanctuary.post_comments.count %></p>
+  <% @sanctuary.post_comments.each do |post_comment| %>
+    <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+    <%= post_comment.user.name %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@sanctuary, @post_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
   <% if @sanctuary.favorited_by?(current_user) %>
-    <p>
+  <p>
       <%= link_to sanctuary_favorites_path(@sanctuary), method: :delete do %>
         ♥<%= @sanctuary.favorites.count %> いいね
       <% end %>

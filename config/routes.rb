@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :genres,only: [:index,:create,:edit,:update]
     resources :tags,only: [:index,:show,:edit,:update]
     resources :sanctuarys, only: [:index,:show,:edit,:update]
-    resources :orders,only: [:show,:update] do
+    resources :post_comments, only: [:create]
+
     end
   end
 # ユーザー用
@@ -30,6 +31,7 @@ devise_for :user,skip: [:passwords], controllers: {
   resource :favorites, only: [:create, :destroy]
   resources :impression, only: [:create, :destroy]
   resources :users, only: [:show, :edit, :update,:quit]
+  resources :post_comments, only: [:create]
 
  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

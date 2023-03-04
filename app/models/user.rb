@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :sanctuarys, dependent: :destroy
   has_many :impressions, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
  def active_for_authentication?
     super && (is_deleted == false)

@@ -8,6 +8,7 @@ class Admin::SanctuarysController < ApplicationController
 
   def show
     @sanctuary = Sanctuary.new
+    @post_comment = PostComment.new
   end
 
   def destroy
