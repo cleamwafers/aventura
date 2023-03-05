@@ -16,10 +16,9 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create]
 
     end
-  end
 # ユーザー用
 # URL /customers/sign_in ...
-devise_for :user,skip: [:passwords], controllers: {
+  devise_for :user,skip: [:passwords], controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'
 }
@@ -27,11 +26,8 @@ devise_for :user,skip: [:passwords], controllers: {
  namespace :user do
   #root to: 'homes#top'
   get 'homes/about'
-  resources :sanctuarys, only: [:new, :create, :index, :show,:edit, :destroy] do
-  resources :sanctuarys do
-    collection do
+  resources :sanctuarys, only: [:new, :create, :index, :show,:edit, :destroy,:collection] do
       get 'search'
-    end
   end
   resource :favorites, only: [:create, :destroy]
   resources :impression, only: [:create, :destroy]
@@ -40,5 +36,4 @@ devise_for :user,skip: [:passwords], controllers: {
 
  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
 end
