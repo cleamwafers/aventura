@@ -28,6 +28,11 @@ devise_for :user,skip: [:passwords], controllers: {
   #root to: 'homes#top'
   get 'homes/about'
   resources :sanctuarys, only: [:new, :create, :index, :show,:edit, :destroy] do
+  resources :sanctuarys do
+    collection do
+      get 'search'
+    end
+  end
   resource :favorites, only: [:create, :destroy]
   resources :impression, only: [:create, :destroy]
   resources :users, only: [:show, :edit, :update,:quit]

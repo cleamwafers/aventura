@@ -1,4 +1,5 @@
 class User::SanctuarysController < ApplicationController
+  before_action :set_q, only: [:index, :search]
 
   def new
     @sanctuary =Sanctuary.new
@@ -42,7 +43,15 @@ class User::SanctuarysController < ApplicationController
     redirect_to 'show'  # 投稿一覧画面へリダイレクト
   end
 
+  def search
+    @results = @q.result
+  end
+
 private
+
+  def set_q
+    @q = sanctuary.ransack(params[:q])
+  end
 
   def sanctuary_params
     params.require(:sanctuary).permit(:image,:name,:favorite_id,:genre_id,:user_id,:sanctuary_tags_id,:longitude,:latitudeplace,:impression)
