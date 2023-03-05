@@ -17,5 +17,5 @@
     <p>聖地名：<%= sanctuary.name %></p>
     <p>説明：<%= post_image.caption %></p>
     <p>ユーザーネーム：<%= post_image.user.name %></p>
-    <p><%= link_to "#{sanctuary.post_comments.count} コメント", post_image_path(sanctuary.id) %></p>  </div>
+    <p><%= link_to "#{sanctuary.post_comments.count} コメント", sanctuary_path(sanctuary.id) %></p>  </div>
 <% end %>
