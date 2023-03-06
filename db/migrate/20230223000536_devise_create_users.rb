@@ -32,18 +32,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-     ## お気に入りを保存するカラム
-       t.integer :favorite_id, null: false
-      ## 聖地を保存するカラム
-       t.integer :sanctuary_id, null: false
       ## 名前を保存するカラム
        t.string :name, null: false,unique: true
       ## 自己紹介を保存するカラム
-       t.string :introduction, null: false
+       t.string :introduction
       ## SNSを保存するカラム
-       t.string :sns, null: false, unique: true
+       t.string :sns, unique: true
       ## 退会処理を保存するカラム
-       t.boolean :is_deleted
+       t.boolean :is_deleted,null: false,default: false
 
 
       t.timestamps null: false

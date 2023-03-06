@@ -16,7 +16,7 @@ class User::SanctuarysController < ApplicationController
   def index
     @sanctuarys = Sanctuary.all.page(params[:page])
     @sanctuary = Sanctuary.new
-     @images = Sanctuary.all
+    @images = Sanctuary.all
   end
 
   def show
@@ -50,7 +50,7 @@ class User::SanctuarysController < ApplicationController
 private
 
   def set_q
-    @q = sanctuary.ransack(params[:q])
+    @q = Sanctuary.ransack(params[:q])
   end
 
   def sanctuary_params
