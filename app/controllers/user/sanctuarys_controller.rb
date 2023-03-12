@@ -21,6 +21,7 @@ class User::SanctuarysController < ApplicationController
 
   def show
     @sanctuary = Sanctuary.find(params[:id])
+    gon.sanctuary = @sanctuary
   end
 
   def edit

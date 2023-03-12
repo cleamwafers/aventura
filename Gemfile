@@ -64,3 +64,7 @@ gem 'ransack'
 gem 'jquery-rails'
 
 gem 'rails-i18n'
+
+gem 'geocoder'
+
+gem 'gon'

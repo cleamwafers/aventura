@@ -9,7 +9,7 @@
   <% if @sanctuary.user == current_user %>
     <%= link_to "削除",sanctuary_path(@sanctuary), method: :delete %>
   <% end %>
-  
+
   <div>
   <p>コメント件数：<%= @sanctuary.post_comments.count %></p>
   <% @sanctuary.post_comments.each do |post_comment| %>

@@ -13,7 +13,8 @@
     <h4>聖地名</h4>
       <%= f.text_field :name %>
     <h4>場所</h4>
-    <!--緯度と経度をどうするか-->
+    <%= f.label :address, '住所' %>br
+    <%= f.text_field :address, class: 'form-control' %>br
     <h4>ジャンル</h4>
       <%= f.text_area :genre_id %>
 
