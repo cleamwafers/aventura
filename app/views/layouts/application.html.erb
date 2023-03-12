@@ -55,21 +55,21 @@
      <%= link_to "聖地一覧",admin_sanctuarys_path,class: "btn btn-light"  %>
      <%= link_to  "新規登録",new_user_registration_path,class: "btn btn-light" %>
      <%= link_to "ログイン", new_user_session_path,class: "btn btn-light" %>
-
     </ul>
   </div>
   <% end %>
 
   </header>
   </div>
-  <hr>
    <main>
     <%= flash[:notice] %>
     <div class="container">
      <%= yield %>
     </div>
    </main>
-  </hr>
-
+  <footer class="bg-dark text-white pt-5 pb-4">
+   <p>※このサイトは楽しく情報共有できるためのものです。不適切な書き込みがある場合は削除することがあります。ご理解ください。</p>
+  </footer>
   </body>
+
 </html>

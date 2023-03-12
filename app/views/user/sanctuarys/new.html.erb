@@ -1,16 +1,26 @@
-<h1>聖地登録</h1>
-  <%= form_with model: @sanctuary do |f| %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="head-line title_h2 text-center">聖地登録</h2>
+     <%= form_for(@sanctuary, url: new_user_sanctuary_path, method: :post, class: "form-horizontal") do |f| %>
+      <% if @sanctuary.errors.any? %>
+        <%= @sanctuary.errors.count %>件のエラーが発生しました
+       <% @sanctuary.errors.full_messages.each do |message| %>
+        <%= message %>
+       <% end %>
+      <% end %>
 
     <h4>聖地名</h4>
       <%= f.text_field :name %>
     <h4>場所</h4>
     <!--緯度と経度をどうするか-->
     <h4>ジャンル</h4>
-      <%= f.text_area :genre %>
+      <%= f.text_area :genre_id %>
 
     <h4>感想</h4>
       <%= f.text_area :impression %>
     <h4>画像</h4>
       <%= f.file_field :image, accept: "image/*" %>
-    <%= f.submit '投稿' %>
-  <% end %>
+    <%= f.submit '登録する', class: "btn btn-success" %>
+
+     <% end %>

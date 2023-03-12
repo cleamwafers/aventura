@@ -13,7 +13,7 @@ class User::UsersController < ApplicationController
 
     if @user.update(user_params)
     flash[:success] = "登録情報を変更しました"
-    redirect_to user_homes_top_path
+    redirect_to user_user_path
     else
       render :edit and return
     end

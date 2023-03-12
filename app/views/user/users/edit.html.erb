@@ -3,7 +3,7 @@
 
     <h2 class="head-line title_h2 text-center">会員情報編集</h2>
 
-    <%= form_with(model: @user, url: user_path(@user), local: true ,method: :put) do |f| %>
+    <%= form_with(model: @user, url: user_user_path(@user), local: true ,method: :put) do |f| %>
 
       <div class="col-xs-10">
         <div class="form-group col-xs-12">
@@ -26,7 +26,7 @@
 
       <div class="actions col-xs-9 col-xs-offset-3">
         <%= f.submit "編集内容を保存する", class: "btn btn-success" %>
-        <%= link_to quit_users_path do %>
+        <%= link_to edit_user_user_path do %>
         <button class="btn btn-danger" >
          退会する
         </button>

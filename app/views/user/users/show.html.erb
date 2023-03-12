@@ -1,25 +1,37 @@
-<!-- ユーザーの投稿一覧 -->
-<% @users.each do |user| %>
-  <div>
-    <p>ユーザー名：<%= user.name %></p>
-    <p>メールアドレス：<%= user.email %></p>
-    <p>sns：<%= user.sns %></p>
-    <p>プロフィール画像：<% if post.user.image.attached? %>
-             <%= image_tag post.user.image %>
-                <% else %>
-            <%= image_tag no.user.png %>
-                <% end %></p>
-    <p>自己紹介：<%= user.introduction %></p>
-<% end %>
+<div class="row">
+	<div class="col-xs-offset-1 col-xs-8">
+<h4>登録情報 <%= link_to"編集する", edit_user_user_path,class: "btn btn-success" %></h4>
 
-<h4>投稿</h4>
-<%= link_to new_user_sanctuary_path do %>
-<i class="fas fa-plus"></i>
-<div class="pull-right margin-bottom">
-       <%= link_to user_sanctuary_path do %>
-             <button class="btn btn-primary" >
-              一覧を見る
-             </button>
-       <% end %>
+<table border="1" cellspacing="0" cellpadding="0" >
+  <tr>
+   <th>ユーザー名</th>
+   <td><%= @user.name %><td>
+  </tr>
+   <tr>
+   <th>メールアドレス</th>
+   <td><%= @user.email %><td>
+  </tr>
+  <tr>
+  <th>sns</th>
+   <td><%= @user.sns %><td>
+  </tr>
+  <th>プロフィール画像</th>
+   <td>
+   <%= image_tag @user.get_image(100,100) %>
+   <td>
+  </tr>
+  <tr>
+   <th>自己紹介</th>
+   <td><%= @user.introduction %><td>
+  </tr>
 </div>
-<% end %>
+
+<div class="mypage-bottoms">
+<h4>投稿
+<%= link_to new_user_sanctuary_path do %>
+<i class="fas fa-plus"></i><% end %>
+     <%= link_to"一覧を見る", user_sanctuary_path,class: "btn btn-primary" %>
+</h4>
+</div>
+	</div>
+</div>
