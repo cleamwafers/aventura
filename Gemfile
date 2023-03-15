@@ -68,3 +68,5 @@ gem 'rails-i18n'
 gem 'geocoder'
 
 gem 'gon'
+
+gem 'audiojs-rails'

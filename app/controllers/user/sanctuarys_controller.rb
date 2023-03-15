@@ -55,6 +55,6 @@ private
   end
 
   def sanctuary_params
-    params.require(:sanctuary).permit(:image,:name,:favorite_id,:genre_id,:user_id,:sanctuary_tags_id,:longitude,:latitudeplace,:impression)
+    params.require(:sanctuary).permit(:image,:name,:favorite_id,:genre_id,:user_id,:sanctuary_tags_id,:longitude,:latitudeplace,:impression,:address)
   end
 end
