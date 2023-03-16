@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2023_03_04_142049) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.integer "sanctuarys_id", null: false
     t.string "genre_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -68,19 +67,19 @@ ActiveRecord::Schema.define(version: 2023_03_04_142049) do
 
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
-    t.integer "user_id"
-    t.integer "post_image_id"
+    t.integer "user_id", null: false
+    t.integer "sanctuary_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sanctuaries", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.integer "user_id", null: false
     t.integer "genre_id", null: false
-    t.integer "favorite_id", null: false
     t.integer "sanctuary_tags_id", null: false
-    t.float "longitude"
-    t.float "latitude"
     t.string "name", null: false
     t.string "place", null: false
     t.string "impression", null: false
@@ -96,7 +95,6 @@ ActiveRecord::Schema.define(version: 2023_03_04_142049) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.integer "sanctuarys_id", null: false
     t.string "tags_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

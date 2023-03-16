@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
     # get '/' => '/'
     resources :users,only: [:index,:show,:edit,:update]
-    resources :genres,only: [:index,:create,:edit,:update]
+    resources :genres,only: [:index,:create,:edit,:update,:destroy]
     resources :tags,only: [:index,:show,:edit,:update]
     resources :sanctuarys, only: [:index,:show,:edit,:update]
     resources :post_comments, only: [:create]
