@@ -5,10 +5,8 @@ class CreateSanctuaries < ActiveRecord::Migration[6.1]
     t.string :address
     t.float :latitude
     t.float :longitude
-
     t.integer :user_id, null: false
     t.integer :genre_id, null: false
-    t.integer :sanctuary_tags_id, null: false
     t.string :name, null: false
     t.string :place, null: false
     t.string :impression, null: false

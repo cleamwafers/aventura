@@ -27,12 +27,12 @@ Rails.application.routes.draw do
   #root to: 'homes#top'
   get 'homes/about'
   resources :sanctuarys, only: [:new, :create, :index, :show,:edit, :destroy,:collection] do
-      get 'search'
+    get 'search'
+    resources :sanctuary_comments, only: [:create, :destroy]
   end
   resource :favorites, only: [:create, :destroy]
   resources :impression, only: [:create, :destroy]
   resources :users, only: [:show, :edit, :update,:quit]
-  resources :post_comments, only: [:create]
 
  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

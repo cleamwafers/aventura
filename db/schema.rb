@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_04_142049) do
+ActiveRecord::Schema.define(version: 2023_03_23_115147) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,10 +79,17 @@ ActiveRecord::Schema.define(version: 2023_03_04_142049) do
     t.float "longitude"
     t.integer "user_id", null: false
     t.integer "genre_id", null: false
-    t.integer "sanctuary_tags_id", null: false
     t.string "name", null: false
     t.string "place", null: false
     t.string "impression", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sanctuary_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id", null: false
+    t.integer "sanctuary_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

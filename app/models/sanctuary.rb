@@ -1,9 +1,11 @@
 class Sanctuary < ApplicationRecord
   belongs_to :user
-  has_many_attached :image
-  has_many :impressions, dependent: :destroy
+  has_many_attached :images
+  # has_many :impressions, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :post_comments, dependent: :destroy
+  has_many :sanctuary_comments, dependent: :destroy
+  has_many :sanctuary_tags, dependent: :destroy
+  belongs_to :genre
 
   def get_image(width,height)
     unless image.attached?

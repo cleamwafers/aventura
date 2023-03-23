@@ -10,7 +10,7 @@ class User::SanctuarysController < ApplicationController
     @sanctuary.user_id = current_user.id
     @sanctuary.save
     flash[:success] = "聖地を登録しました"
-    redirect_to sanctuary_path
+    redirect_to user_sanctuarys_path
   end
 
   def index
@@ -21,7 +21,8 @@ class User::SanctuarysController < ApplicationController
 
   def show
     @sanctuary = Sanctuary.find(params[:id])
-    gon.sanctuary = @sanctuary
+    @sanctuary_comment = SanctuaryComment.new
+    @sanctuary_comments = SanctuaryComment.where(sanctuary_id: params[:id])
   end
 
   def edit
@@ -55,6 +56,17 @@ private
   end
 
   def sanctuary_params
-    params.require(:sanctuary).permit(:image,:name,:favorite_id,:genre_id,:user_id,:sanctuary_tags_id,:longitude,:latitudeplace,:impression,:address)
+    params.require(:sanctuary).permit(
+      :name,
+      :favorite_id,
+      :genre_id,
+      :user_id,
+      :longitude,
+      :latitude,
+      :place,
+      :impression,
+      :address,
+      images: []
+      )
   end
 end

@@ -1,26 +1,105 @@
 
-<div class="row">
-  <div class="col-xs-12">
     <h2 class="head-line title_h2 text-center">聖地登録</h2>
-     <%= form_for(@sanctuary, url: new_user_sanctuary_path, method: :post, class: "form-horizontal") do |f| %>
+
+
+
+
+
+<%= form_with(model: @sanctuary, url: user_sanctuarys_path, method: :post, class: "form-horizontal") do |f| %>
+  <div class="row">
+    <div class="col-md-6">
       <% if @sanctuary.errors.any? %>
         <%= @sanctuary.errors.count %>件のエラーが発生しました
-       <% @sanctuary.errors.full_messages.each do |message| %>
-        <%= message %>
-       <% end %>
+        <% @sanctuary.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
       <% end %>
 
-    <h4>聖地名</h4>
-      <%= f.text_field :name %>
-    <h4>場所</h4>
-    <%= f.text_field :place %>
-    <h4>ジャンル</h4>
-      <%= f.text_area :genre_id %>
+      <h4>聖地名</h4>
+        <%= f.text_field :name %>
+      <h4>ジャンル</h4>
+      <%#= f.select :genre_id, [['ヨーロッパ・アメリカ', 1], ['アフリカ', 2], ['アジア・オセアニア', 3]] %>
+      <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %>
+      <h4>タグ</h4>
+      <%= f.text_field :tags_name %>
+      <h4>感想</h4>
+        <%= f.text_area :impression %>
+      <h4>画像</h4>
+        <%= f.file_field :images, accept: "image/*", multiple: true %>
+      <%= f.submit '登録する', class: "btn btn-success" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.text_field :place, placeholder: '富士山' %>
+      <input type="button" value="検索" onclick="codeAddress()">
+      <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+      <div id="map"></div>
+    </div>
+  </div>
+  <%= f.hidden_field :latitude %>
+  <%= f.hidden_field :longitude %>
+<% end %>
 
-    <h4>感想</h4>
-      <%= f.text_area :impression %>
-    <h4>画像</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-    <%= f.submit '登録する', class: "btn btn-success" %>
+<style>
+  #map {
+    width: 100%;
+    height: 400px;
+  }
+</style>
 
-     <% end %>
+<script>
+//初期マップの設定
+let map
+let marker
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center:  {lat: 35.6803997, lng:139.7690174},  //東京
+    zoom: 8,
+
+  });
+}
+
+//検索後のマップ作成
+let geocoder
+let aft
+function codeAddress(){
+  let inputAddress = document.getElementById('sanctuary_place').value;
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+        //マーカーが複数できないようにする
+        if (aft == true){
+            marker.setMap(null);
+        }
+
+        //新しくマーカーを作成する
+        map.setCenter(results[0].geometry.location);
+            marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            draggable: true	// ドラッグ可能にする
+        });
+
+        //二度目以降か判断
+        aft = true
+
+        //検索した時に緯度経度を入力する
+        document.getElementById('sanctuary_latitude').value = results[0].geometry.location.lat();
+        document.getElementById('sanctuary_longitude').value = results[0].geometry.location.lng();
+
+        // マーカーのドロップ（ドラッグ終了）時のイベント
+        google.maps.event.addListener( marker, 'dragend', function(ev){
+            // イベントの引数evの、プロパティ.latLngが緯度経度
+            document.getElementById('sanctuary_latitude').value = ev.latLng.lat();
+            document.getElementById('sanctuary_longitude').value = ev.latLng.lng();
+        });
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });
+}
+
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

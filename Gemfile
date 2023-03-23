@@ -61,12 +61,14 @@ gem 'kaminari','~> 1.2.1'
 
 gem 'ransack'
 
-gem 'jquery-rails'
+# gem 'jquery-rails'
 
 gem 'rails-i18n'
 
 gem 'geocoder'
 
-gem 'gon'
+# gem 'gon'
 
 gem 'audiojs-rails'
+
+gem 'dotenv-rails'

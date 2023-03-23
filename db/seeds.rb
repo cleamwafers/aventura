@@ -12,3 +12,4 @@ Genre.create([
     { genre_name: 'アフリカ' },
     { genre_name: 'アジア・オセアニア'},
     ])
+    

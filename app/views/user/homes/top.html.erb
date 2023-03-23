@@ -1,10 +1,10 @@
 <h1>Bienvenido,aventura</h1>
 
 <!-- 再生プレイヤー -->
- <% audio_tag ("aventura/app/assets/audios/1224788_sunset-in-the-gardens-of-spain_preview.mp3") %>
+ <%# audio_tag ("aventura/app/assets/audios/1224788_sunset-in-the-gardens-of-spain_preview.mp3") %>
 
-    <%= audio_tag("audio.mp3",id:"audio") %>
-    <%=f.submit "I got it!" ,class:"waves-effect waves-light btn deep-purple darken-2 audioButton"%>
+    <%#= audio_tag("audio.mp3",id:"audio") %>
+    <%#=f.submit "I got it!" ,class:"waves-effect waves-light btn deep-purple darken-2 audioButton"%>
     <%=javascript_tag do%>
         document.querySelector('.audioButton').onclick = function () {
         document.querySelector("#audio").play();
