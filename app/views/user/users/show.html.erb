@@ -1,6 +1,14 @@
 <div class="row">
 	<div class="col-xs-offset-1 col-xs-8">
 <h4>登録情報 <%= link_to"編集する", edit_user_user_path,class: "btn btn-success" %></h4>
+<div class="mypage-bottoms">
+<h4>投稿
+<%= link_to new_user_sanctuary_path do %>
+ <i class="fas fa-plus"></i>
+<% end %>
+<%= link_to"一覧を見る", user_sanctuarys_path, class: "btn btn-primary" %>
+</h4>
+</div>
 
 <table border="1" cellspacing="0" cellpadding="0" >
   <tr>
@@ -14,6 +22,7 @@
   <tr>
   <th>sns</th>
    <td><%= @user.sns %><td>
+   <%#　link_to? 　%>
   </tr>
   <th>プロフィール画像</th>
    <td>
@@ -25,14 +34,4 @@
    <td><%= @user.introduction %><td>
   </tr>
 </div>
-
-<div class="mypage-bottoms">
-<h4>投稿
-<%= link_to new_user_sanctuary_path do %>
- <i class="fas fa-plus"></i>
-<% end %>
-<%= link_to"一覧を見る", user_sanctuarys_path, class: "btn btn-primary" %>
-</h4>
-</div>
 	</div>
-</div>
