@@ -30,13 +30,13 @@
   </div>
  <% if @sanctuary.favorited_by?(current_user) %>
     <p>
-      <%= link_to user_favorites_path(@sanctuary), method: :delete do %>
+      <%= link_to user_favorite_path(@sanctuary), method: :delete do %>
         ♥<%= @sanctuary.favorites.count %> いいね
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to user_favorites_path(@sanctuary), method: :post do %>
+      <%= link_to  user_favorites_path, method: :post do %>
         ♡<%= @sanctuary.favorites.count %> いいね
       <% end %>
     </p>

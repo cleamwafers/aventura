@@ -1,41 +1,42 @@
-<div class="container-fluid">
-       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <i class="fas fa-search"></i>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-       </form>
-      </div>
-<h3 class="head-line title_h2 text-center admin_item_index">聖地一覧</h3>
-<div class="row">
-    <table class="table table-hover table-bordered table-condensed">
-      <thead>
-        <tr class="info">
-          <th>聖地ID</th>
-          <th>聖地名</th>
-          <th>ジャンル</th>
-          <th>タグ<th>
-        </tr>
-      </thead>
-      <tbody>
-				<% @sanctuarys.each do |sanctuary| %>
-  				<tr>
-            <td>
-              <%= sanctuary.id %>
-            </td>
-            <td>
-              <%= link_to sanctuary.name, user_sanctuarys_path(sanctuary.id) %>
-            </td>
-            <td>
-              <%= sanctuary.genres_name %>
-            </td>
-            <td>
-              <%= sanctuary.tags_name %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <%= paginate @sanctuarys %>
+<div class="container">
+  <h1>聖地一覧</h1>
+  <div id="map"></div>
 </div>
 
+<style>
+  #map {
+    width: 100%;
+    height: 400px;
+  }
+</style>
+
+
+<script>
+  function initMap(){
+    let map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 49, lng: 0 },
+      zoom: 1
+    });
+
+    <% @sanctuarys.each do |sanctuary| %>
+      const infowindow_<%= sanctuary.id %> = new google.maps.InfoWindow({
+        content: '<h6><%= link_to sanctuary.name, user_sanctuary_path(sanctuary) %></h6><%= sanctuary.user.name %><br><%= image_tag sanctuary.user.get_image(72, 72) %>',
+      });
+
+      const marker_<%= sanctuary.id %> = new google.maps.Marker({
+        position: {lat: <%= sanctuary.latitude ||= 0 %>, lng: <%= sanctuary.longitude ||= 0 %>},
+        map,
+        title: "<%= sanctuary.name %>",
+      });
+
+      marker_<%= sanctuary.id %>.addListener("click", () => {
+        infowindow_<%= sanctuary.id %>.open({
+          anchor: marker_<%= sanctuary.id %>,
+          map,
+        });
+      });
+    <% end %>
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

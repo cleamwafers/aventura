@@ -1,0 +1,15 @@
+.div{
+  position: relative;
+}
+.img {
+  background-size: cover;
+  size: 800x600px;
+}
+.p {
+  color: #ffffff; /* 文字色 */
+  font-size: 35px; /* 文字の大きさ */
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%,-50%);
+}

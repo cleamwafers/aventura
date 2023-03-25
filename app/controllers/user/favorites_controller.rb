@@ -11,6 +11,6 @@ class User::FavoritesController < ApplicationController
     sanctuary = Sanctuary.find(params[:sanctuary_id])
     favorite = current_user.favorites.find_by(sanctuary_id: sanctuary.id)
     favorite.destroy
-    redirect_to sanctuary_path(sanctuary)
+    redirect_to sanctuary_path
   end
 end
