@@ -9,7 +9,7 @@ class User::SanctuarysController < ApplicationController
     @sanctuary = Sanctuary.new(sanctuary_params)
     @sanctuary.user_id = current_user.id
     if @sanctuary.save
-      @sanctuary.save_tags(params[:sanctuary][:tags])
+      @sanctuary.save_tags(params[:sanctuary][:tag_name])
       flash[:success] = "聖地を登録しました"
       redirect_to user_sanctuarys_path
     else

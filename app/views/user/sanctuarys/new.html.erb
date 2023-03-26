@@ -23,7 +23,7 @@
       <%#= f.select :genre_id, [['ヨーロッパ・アメリカ', 1], ['アフリカ', 2], ['アジア・オセアニア', 3]] %>
       <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %>
       <h4>タグ</h4>
-      <%= f.text_field :tags %>
+      <%= f.text_field :tag_name %>
       <h4>感想</h4>
         <%= f.text_area :impression %>
       <h4>画像</h4>
