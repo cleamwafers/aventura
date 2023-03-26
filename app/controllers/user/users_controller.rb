@@ -12,8 +12,8 @@ class User::UsersController < ApplicationController
     @user = current_user
 
     if @user.update(user_params)
-    flash[:success] = "登録情報を変更しました"
-    redirect_to user_user_path
+      flash[:success] = "登録情報を変更しました"
+      redirect_to user_user_path
     else
       render :edit and return
     end
@@ -27,7 +27,7 @@ class User::UsersController < ApplicationController
     @user.update(is_deleted: true)
 
     reset_session
-    flash[:notice] = "ありがとうございました。またのご利用ください。"
+    flash[:notice] = "ありがとうございました。またご利用ください。"
     redirect_to root_path
   end
 

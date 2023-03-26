@@ -1,27 +1,78 @@
-<h1>聖地詳細</h1>
-<div class="map">
- <div id="map">
+<div class="container">
+  <h2>聖地詳細</h2>
+
+  <%= link_to 'この投稿を削除する',
+              admin_sanctuary_path(@sanctuary),
+              class: 'btn btn-danger my-3',
+              method: :delete,
+              data: {confirm: '管理者権限で削除しても良いですか？'} %>
+
+  <div id="map"></div>
+
+  <% if @sanctuary.images.attached? %>
+    <div class="row my-3">
+      <% @sanctuary.images.each do |image| %>
+        <div class="col-md-4">
+          <div class="card">
+            <%= image_tag image, class: 'img-fluid', style: 'width: 100%; height: 200px; object-fit: cover;' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-4">
+      聖地名
+      <h3><%= @sanctuary.name %></h3>
+    </div>
+    <div class="col-md-4">
+      ジャンル
+      <h5><%= @sanctuary.genre.genre_name %></h3>
+    </div>
+    <div class="col-md-4">
+      感想
+      <div><%= simple_format(@sanctuary.impression) %></div>
+    </div>
   </div>
+   ♥<%= @sanctuary.favorites.count %> いいね
+  <hr>
+
+  <% @sanctuary.sanctuary_comments.each do |s_comment| %>
+    <div>
+      <h6><%= s_comment.user.name %></h6>
+      <%= simple_format(s_comment.comment) %>
+      <%= link_to '🗑',
+                  admin_sanctuary_sanctuary_comment_path(@sanctuary, s_comment),
+                  method: :delete, data: {confirm: '管理者権限で削除しますか？'} %>
+    </div>
+  <% end %>
+
 </div>
 
-<div type="text/javascript">
-  <script>
-    function initMap(){
-      let map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
-      zoom: 15
-      });
+<style>
+  #map {
+    width: 100%;
+    height: 200px;
+  }
+</style>
 
-    marker = new google.maps.Marker({
-      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
-      position: {
-        lat: gon.user.latitude,
-        lng: gon.user.longitude
-      },
-      map: map
+<script>
+  function initMap(){
+    let map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: <%= @sanctuary.latitude ||= 0 %>, lng: <%= @sanctuary.longitude ||= 0 %> },
+    zoom: 15
     });
-    }
-  </script>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
-<div>
+  marker = new google.maps.Marker({
+    // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+    position: {
+      lat: <%= @sanctuary.latitude %>,
+      lng: <%= @sanctuary.longitude %>
+    },
+    map: map
+  });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

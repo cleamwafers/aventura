@@ -22,7 +22,7 @@
   <tr>
   <th>sns</th>
    <td><%= @user.sns %><td>
-   <%#　link_to? 　%>
+   <%# link_to? %>
   </tr>
   <th>プロフィール画像</th>
    <td>
@@ -35,3 +35,16 @@
   </tr>
 </div>
 	</div>
+
+ 自分のいいねした一覧
+<ul>
+	 <% current_user.favorites.each do |favorite| %>
+	  <li><%= link_to favorite.sanctuary.name, user_sanctuary_path(favorite.sanctuary_id) %></li>
+	 <% end %>
+	</ul>
+ 自分の投稿一覧
+	<ul>
+	 <% current_user.sanctuarys.each do |sanctuary| %>
+	  <li><%= link_to sanctuary.name, user_sanctuary_path(sanctuary) %></li>
+	 <% end %>
+	</ul>

@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2023_03_23_115147) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "tags_name", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

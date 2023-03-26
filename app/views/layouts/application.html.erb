@@ -20,30 +20,38 @@
   <div class="container">
    <div class="page-header">
     <ul class="logo">
-     <%=link_to "LOGO", root_path, class: "btn btn-light" %>
+     <%=link_to "Aventura", root_path, class: "btn btn-info" %>
       <nav class="navbar navbar-light bg-light">
        ようこそ、<%= current_user.name %>さん
         <div class="button1">
-          <%= link_to"MY画面", user_user_path(current_user),class: "btn btn-light" %>
-          <%= link_to "聖地一覧",user_sanctuarys_path,class: "btn btn-light"  %>
-          <%= link_to "投稿一覧",user_sanctuarys_path,class: "btn btn-light"  %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light" %>
+          <%= link_to"MY画面", user_user_path(current_user),class: "btn btn-primary" %>
+          <%= link_to "聖地一覧",user_sanctuarys_path,class: "btn btn-warning"  %>
+          <%= link_to "投稿一覧",user_sanctuarys_path,class: "btn btn-warning"  %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
         </div>
       </nav>
     </ul>
    </div>
+   <%= form_tag(search_path, method: :get) do %>
+    <%= label_tag :keywords, '検索ワード' %>
+
+    <%# 検索ワードを引く次ぐためにparams[:keywords] %>
+    <%= text_field_tag :keywords, params[:keywords] %>
+
+    <%= submit_tag '検索' %>
+  <% end %>
    <% elsif admin_signed_in? %>
    <!-- 管理者がログインしている時 -->
   <div class="page-header">
    <ul class="logo">
-    <%=link_to "LOGO", root_path, class: "btn btn-light" %>
-     <nav class="navbar navbar-light bg-light">
-     ようこそ!
+    <%=link_to "Aventura", root_path, class: "btn btn-info" %>
+     <nav class="navbar navbar-white bg-white">
+     管理者ログイン中
       <div class="button2">
-       <%= link_to "聖地一覧",admin_sanctuarys_path,class: "btn btn-light"  %>
-       <%= link_to "ユーザー一覧",admin_users_path,class: "btn btn-light" %>
-       <%= link_to "ジャンル一覧",admin_genres_path,class: "btn btn-light" %>
-       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "btn btn-light"  %>
+       <%= link_to "聖地一覧",admin_sanctuarys_path,class: "btn btn-warning"  %>
+       <%= link_to "ユーザー一覧",admin_users_path,class: "btn btn-warning" %>
+       <%= link_to "ジャンル一覧",admin_genres_path,class: "btn btn-warning" %>
+       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "btn btn-danger"  %>
       </div>
      </nav>
     </ul>
@@ -52,11 +60,11 @@
   <!-- ログインしていない時 -->
   <div class="page-header">
     <ul class="logo">
-     <%=link_to "LOGO", root_path, class: "btn btn-light" %>
-     <%= link_to  "About",user_homes_about_path,class: "btn btn-light" %>
-     <%= link_to "聖地一覧",admin_sanctuarys_path,class: "btn btn-light"  %>
-     <%= link_to  "新規登録",new_user_registration_path,class: "btn btn-light" %>
-     <%= link_to "ログイン", new_user_session_path,class: "btn btn-light" %>
+     <%=link_to "Aventura", root_path, class: "btn btn-info" %>
+     <%= link_to  "About",user_homes_about_path,class: "btn btn-warning" %>
+     <%= link_to "聖地一覧",admin_sanctuarys_path,class: "btn btn-warning"  %>
+     <%= link_to  "新規登録",new_user_registration_path,class: "btn btn-warning" %>
+     <%= link_to "ログイン", new_user_session_path,class: "btn btn-primary" %>
     </ul>
   </div>
   <% end %>

@@ -1,22 +1,43 @@
 <h1>ユーザー詳細・編集</h1>
 
-<%= form_with(model: @user, url: user_path(@user), local: true ,method: :put) do |f| %>
-<p><i class="far fa-user"></p>
-  <div class="form-group col-xs-12">
-   <%= f.label :"投稿者", class: "col-sm-3 control-label" %>
-   <%= f.text_field :name, class: "col-sm-2 form-control-static" %>
+ <div class="row mb-3">
+  <div class="col-md-3">
+   投稿者
   </div>
-  <div class="form-group col-xs-12">
-   <%= f.label :"sns", class: "col-sm-3 control-label" %>
-   <%= f.text_field :sns, class: "col-sm-2 form-control-static" %>
+  <div class="col-md-9">
+   <%= @user.name %>
   </div>
-  <div class="form-group col-xs-12">
-   <%= f.label :"自己紹介", class: "col-sm-3 control-label" %>
-   <%= f.text_field :introduction, class: "col-sm-2 form-control-static" %>
-  </div>
-  <div class="form-group col-xs-12">
-   <%= f.label :"感想", class: "col-sm-3 control-label" %>
-   <%= f.text_field :impression, class: "col-sm-2 form-control-static" %>
-  </div>
+ </div>
 
-  <%= link_to "このユーザーの情報・コメントを削除する", admin_users_path(current_user), method: :Delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
+ <div class="row mb-3">
+  <div class="col-md-3">
+   sns
+  </div>
+  <div class="col-md-9">
+   <%= @user.sns %>
+  </div>
+ </div>
+
+ <div class="row mb-3">
+  <div class="col-md-3">
+   自己紹介
+  </div>
+  <div class="col-md-9">
+   <%= simple_format(@user.introduction) %>
+  </div>
+ </div>
+
+ <div class="row mb-3">
+  <div class="col-md-3">
+   ステータス
+  </div>
+  <div class="col-md-9">
+   <% unless @user.is_deleted %>
+    有効
+   <% else %>
+    無効
+   <% end %>
+  </div>
+ </div>
+
+ <%= link_to "このユーザーの情報・コメントを削除する", admin_users_path(current_user), method: :Delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>

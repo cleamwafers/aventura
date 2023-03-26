@@ -1,27 +1,26 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @users = User.page(params[:page])
   end
 
   def show
-    @users = User.page(params[:page])
+    @user= User.find(params[:id])
   end
 
   def edit
-    @users = User.page(params[:page])
+    @user = User.find(params[:id])
   end
 
   def update
-    @users = User.page(params[:page])
+    @user = User.find(params[:id])
     if @user.update(user_params)
-			   flash[:success] = "ユーザー情報を更新しました"
-			   redirect_to admin_user_path
+		  flash[:success] = "ユーザー情報を更新しました"
+			redirect_to admin_user_path(@user)
 		else
-				render "edit"
+			render "edit"
 		end
-  end
-
-  def destroy
   end
 
   private

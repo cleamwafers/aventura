@@ -1,15 +1,11 @@
 class Admin::SanctuarysController < ApplicationController
 
   def index
-    @sanctuarys = Sanctuary.all.page(params[:page])
-    @sanctuary = Sanctuary.new
-    @images = Sanctuary.all
+    @sanctuarys = Sanctuary.all
   end
 
   def show
-    @sanctuary = Sanctuary.new
-    @post_comment = PostComment.new
-    gon.sanctuary = @sanctuary
+    @sanctuary = Sanctuary.find(params[:id])
   end
 
   def destroy

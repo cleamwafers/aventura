@@ -1,2 +1,34 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<h2><%= @user.name %>さんの会員詳細</h2><br>
+
+<div class="row">
+ <div class="col-12 col-md-6 mx-auto">
+
+  <%= form_with model: @user,url: admin_user_path(@user),method: :put  do  |f| %>
+   <div class="form-group">
+    <%= f.label :name, "投稿者" %>
+    <%= f.text_field :name, class: "form-control" %>
+   </div>
+   <div class="form-group">
+    <%= f.label :sns, "sns" %>
+    <%= f.text_field :sns, class: "form-control" %>
+   </div>
+   <div class="form-group">
+    <%= f.label :introduction, "自己紹介" %>
+    <%= f.text_area :introduction, class: "form-control" %>
+   </div>
+
+   <div class="form-group">
+    <label>
+     <%= f.radio_button 'is_deleted', true %> 無効
+    </label>
+    <label>
+     <%= f.radio_button 'is_deleted', false %> 有効
+    </label>
+   </div>
+
+   <%= f.submit '更新' %>
+
+  <% end %>
+
+ </div>
+</div>

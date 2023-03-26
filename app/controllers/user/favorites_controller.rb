@@ -1,16 +1,14 @@
 class User::FavoritesController < ApplicationController
 
   def create
-    sanctuary = Sanctuary.find(params[:sanctuary_id])
-    favorite = current_user.favorites.new(sanctuary_id: sanctuary.id)
+    favorite = current_user.favorites.new(sanctuary_id: params[:sanctuary_id])
     favorite.save
-    redirect_to sanctuary_path(sanctuary)
+    redirect_to user_sanctuary_path(params[:sanctuary_id])
   end
 
   def destroy
-    sanctuary = Sanctuary.find(params[:sanctuary_id])
-    favorite = current_user.favorites.find_by(sanctuary_id: sanctuary.id)
+    favorite = current_user.favorites.find_by(sanctuary_id: params[:sanctuary_id])
     favorite.destroy
-    redirect_to sanctuary_path
+    redirect_to user_sanctuary_path(params[:sanctuary_id])
   end
 end

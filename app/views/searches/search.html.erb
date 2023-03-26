@@ -1,0 +1,5 @@
+<ul>
+<% @results.each do |sanctuary| %>
+  <li><%= link_to sanctuary.name, user_sanctuary_path(sanctuary) %></li>
+<% end %>
+</ul>

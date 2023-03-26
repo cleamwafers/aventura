@@ -20,7 +20,7 @@
 
     <% @sanctuarys.each do |sanctuary| %>
       const infowindow_<%= sanctuary.id %> = new google.maps.InfoWindow({
-        content: '<h6><%= link_to sanctuary.name, user_sanctuary_path(sanctuary) %></h6><%= sanctuary.user.name %><br><%= image_tag sanctuary.user.get_image(72, 72) %>',
+        content: '<h6><%= link_to sanctuary.name,admin_sanctuary_path(sanctuary) %></h6><%= sanctuary.user.name %><br><%= image_tag sanctuary.user.get_image(72, 72) %>',
       });
 
       const marker_<%= sanctuary.id %> = new google.maps.Marker({

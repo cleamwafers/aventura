@@ -8,9 +8,13 @@ class User::SanctuarysController < ApplicationController
   def create
     @sanctuary = Sanctuary.new(sanctuary_params)
     @sanctuary.user_id = current_user.id
-    @sanctuary.save
-    flash[:success] = "聖地を登録しました"
-    redirect_to user_sanctuarys_path
+    if @sanctuary.save
+      @sanctuary.save_tags(params[:sanctuary][:tags])
+      flash[:success] = "聖地を登録しました"
+      redirect_to user_sanctuarys_path
+    else
+      render :new
+    end
   end
 
   def index
