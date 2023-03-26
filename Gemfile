@@ -69,8 +69,6 @@ gem 'geocoder'
 
 # gem 'gon'
 
-gem 'audiojs-rails'
-
 gem 'dotenv-rails'
 
 gem "net-smtp"
